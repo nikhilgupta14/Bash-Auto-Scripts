@@ -1,0 +1,27 @@
+#!/usr/bin/expect -f
+
+#sudo apt install expect
+#chmod +x cisco.exp
+
+set VPN_SERVER "Address"
+set VPN_USERNAME "username"
+set VPN_PASSWORD "your_passowrd"
+set VPN_GROUP "group_number"
+set VPN_SECOND_PASSWORD "push"
+
+spawn /opt/cisco/anyconnect/bin/vpn connect $VPN_SERVER
+
+expect "Group:"
+send "$VPN_GROUP\n"
+
+expect "Username: "
+send "$VPN_USERNAME\n"
+
+expect "Password: "
+send "$VPN_PASSWORD\n"
+
+expect "Second Password: "
+send "$VPN_SECOND_PASSWORD\n"
+
+expect eof
+
